@@ -8,3 +8,9 @@
 ## 1.Soil Script is based on Llama2, an open source and free to use LLM by Meta AI
 ## 2.A lightweight model with 7B parameters.
 ## 3.Capable of answering queries.
+## TEAM MEMBERS
+## 1.ARNAV GUPTA
+## 2.TUSHAR GARG(Github link:Tushargarg09)
+## 3.RON ALEXIS
+## 4.ADITYA
+## 5.NAMAN
