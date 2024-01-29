@@ -1,0 +1,65 @@
+##This is the code of UI of our llama project . If you want to run this code then you have to download llama from meta which is a 7b parameter and edit the changes 
+in the model line where you have to copy your path of the downloaded llama folder where you have been stored in the computer.
+##After this , you can any questions to the AI.
+import streamlit as st
+from langchain.prompts import PromptTemplate
+from langchain.llms import CTransformers
+
+
+
+## Function To get response from LLAma 2 model
+
+def getLLamaresponse(input_text,no_words):
+
+    ### LLama2 model
+    llm=CTransformers(model='/Users/naman/Desktop/project/models/llama-2-7b-chat.ggmlv3.q5_K_S.bin',
+                      model_type='llama',
+                      config={'max_new_tokens':256,
+                              'temperature':0.01})
+    
+    ## Prompt Template
+
+    template="""
+        Write a blog for  job profile for a topic {input_text}
+        within {no_words} words.
+            """
+    
+    prompt=PromptTemplate(input_variables=["input_text",'no_words'],
+                          template=template)
+    
+    ## Generate the ressponse from the LLama 2 model
+    response=llm(prompt.format(input_text=input_text,no_words=no_words))
+    print(response)
+    return response
+
+
+
+
+
+
+st.set_page_config(page_title="Agriculture Enthusiast",
+                    page_icon='🌳',
+                    layout='centered',
+                    initial_sidebar_state='collapsed')
+
+st.header("Agriculture Enthusiast 🌳")
+
+input_text=st.text_input("Enter the question")
+
+
+
+col1,col2=st.columns([5,5])
+
+with col1:
+    no_words=st.text_input('No of Words')
+
+with col2:
+  blog_style=st.selectbox('Answer the question for',
+                          ('Researchers','Data Scientist','Common People'),index=0)
+    
+
+submit=st.button("Generate")
+
+## Final response
+if submit:
+    st.write(getLLamaresponse(input_text,no_words))
