@@ -1,6 +1,8 @@
 ##This is the code of UI of our llama project . If you want to run this code then you have to download llama from meta which is a 7b parameter and edit the changes 
 in the model line where you have to copy your path of the downloaded llama folder where you have been stored in the computer.
 ##After this , you can any questions to the AI.
+
+
 import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain.llms import CTransformers
